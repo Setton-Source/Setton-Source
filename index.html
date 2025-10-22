@@ -13,11 +13,11 @@
     <!-- Google tag (gtag.js) - ADDED GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW9WN4489T"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'G-YW9WN4489T');
+        gtag('config', 'G-YW9WN4489T');
     </script>
 
     <style>
@@ -151,35 +151,14 @@
             transition: all 0.3s cubic-bezier(0.1, 0.9, 0.3, 1.2);
         }
 
-        .modal-enter {
-            opacity: 0;
-            transform: none;
-            transition: opacity 0.3s;
-        }
-        .modal-enter-active, .modal-exit {
-            opacity: 1;
-            transform: none;
-            transition: opacity 0.3s;
-        }
-        .modal-exit-active {
-            opacity: 0;
-            transform: none;
-            transition: opacity 0.3s;
-        }
+        /* Modal transitions */
+        .modal-enter { opacity: 0; transition: opacity 0.3s; }
+        .modal-enter-active, .modal-exit { opacity: 1; transition: opacity 0.3s; }
+        .modal-exit-active { opacity: 0; transition: opacity 0.3s ease-in; }
 
-        .modal-enter .modal-content-box {
-            opacity: 0;
-            transform: scale(0.75);
-        }
-        .modal-enter-active .modal-content-box {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .modal-exit-active .modal-content-box {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.2s ease-in;
-        }
+        .modal-enter .modal-content-box { opacity: 0; transform: scale(0.75); }
+        .modal-enter-active .modal-content-box { opacity: 1; transform: scale(1); }
+        .modal-exit-active .modal-content-box { opacity: 0; transform: scale(0.9); transition: all 0.2s ease-in; }
 
         .custom-radio input:checked + label {
             border-color: var(--accent-color);
@@ -236,7 +215,8 @@
             border-radius: 0.75rem;
         }
         .iframe-snapshot {
-            width: 1500px;
+            /* Simulates a large viewport scaled down */
+            width: 1500px; 
             height: 1000px;
             position: absolute;
             top: 50%;
@@ -244,7 +224,7 @@
             transform-origin: 50% 50%;
             transform: translate(-50%, -50%) scale(0.32);
             border: none;
-            pointer-events: none;
+            pointer-events: none; /* Prevents interaction */
         }
         .iframe-overlay {
             position: absolute;
@@ -619,6 +599,7 @@
         </div>
     </footer>
 
+    <!-- Quote Modal -->
     <div id="quote-modal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm z-50 flex justify-center items-start py-8 px-4 hidden modal-exit overflow-y-auto">
         <div class="bg-[var(--primary-color)] rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 my-auto modal-content-box transition-default">
 
@@ -680,10 +661,10 @@
                             <label class="block text-lg font-semibold text-zinc-300">3. Will you require a backend/database?</label>
                             <i data-lucide="help-circle" class="w-5 h-5 ml-2 cursor-pointer text-zinc-500 hover:text-white transition-colors" data-info-target="backend-info"></i>
                         </div>
-                        <div id="backend-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg bg-[#101736] text-zinc-200">
+                        <div id="backend-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg text-zinc-200">
                             The backend is the brain of your website. It's needed for features like user logins, storing product data, saving form entries, or handling any dynamic content.
                         </div>
-                        <div class="grid grid-cols-2 gap-3 custom-radio">
+                        <div id="backend-group" class="grid grid-cols-2 gap-3 custom-radio">
                             <input type="radio" id="backend-no" name="backend" value="no" data-cost="0" class="hidden">
                             <label for="backend-no" class="p-4 rounded-xl border-2 border-zinc-600 text-center cursor-pointer transition-default hover:border-[var(--accent-color)]">No Backend (Static)</label>
 
@@ -701,7 +682,7 @@
                                     <label for="feature-ecommerce" class="ml-3 text-zinc-300">Store / Payment Gateway Integration</label>
                                     <i data-lucide="help-circle" class="w-5 h-5 ml-2 cursor-pointer text-zinc-500 hover:text-white transition-colors" data-info-target="ecommerce-info"></i>
                                 </div>
-                                <div id="ecommerce-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg bg-[#101736] text-zinc-200">
+                                <div id="ecommerce-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg text-zinc-200">
                                     This covers setting up product listings, shopping carts, checkout logic, and connecting to services like PayPal or Stripe to securely accept payments.
                                 </div>
                             </div>
@@ -712,7 +693,7 @@
                                     <label for="feature-admin" class="ml-3 text-zinc-300">Custom Admin/CMS Page</label>
                                     <i data-lucide="help-circle" class="w-5 h-5 ml-2 cursor-pointer text-zinc-500 hover:text-white transition-colors" data-info-target="admin-info"></i>
                                 </div>
-                                <div id="admin-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg bg-[#101736] text-zinc-200">
+                                <div id="admin-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg text-zinc-200">
                                     A Content Management System (CMS) or admin page lets you easily update text, change images, add blog posts, or modify products yourself without needing a developer for every change.
                                 </div>
                             </div>
@@ -723,7 +704,7 @@
                                     <label for="feature-support" class="ml-3 text-zinc-300">Customer Support / Live Chat Integration</label>
                                     <i data-lucide="help-circle" class="w-5 h-5 ml-2 cursor-pointer text-zinc-500 hover:text-white transition-colors" data-info-target="support-info"></i>
                                 </div>
-                                <div id="support-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg bg-[#101736] text-zinc-200">
+                                <div id="support-info" class="info-box hidden mt-2 p-3 text-sm rounded-lg text-zinc-200">
                                     Integrating a tool like Tidio, Zendesk, or a similar service to allow visitors to instantly chat with your team or send support requests directly from the website.
                                 </div>
                             </div>
@@ -734,7 +715,7 @@
                 <div id="step-2-content" class="hidden space-y-6">
                     <div>
                         <label class="block text-lg font-semibold mb-3 text-zinc-300">5. Do you have a defined color scheme?</label>
-                        <div class="grid grid-cols-2 gap-3 custom-radio">
+                        <div id="colors-group" class="grid grid-cols-2 gap-3 custom-radio">
                             <input type="radio" id="colors-yes" name="colors" value="yes" data-cost="0" class="hidden">
                             <label for="colors-yes" class="p-4 rounded-xl border-2 border-zinc-600 text-center cursor-pointer transition-default hover:border-[var(--accent-color)]">Yes (Standard)</label>
 
@@ -745,7 +726,7 @@
 
                     <div>
                         <label class="block text-lg font-semibold mb-3 text-zinc-300">6. Choose your content readiness.</label>
-                        <div class="grid grid-cols-2 gap-3 custom-radio">
+                        <div id="content-group" class="grid grid-cols-2 gap-3 custom-radio">
                             <input type="radio" id="content-ready" name="content" value="ready" data-cost="0" class="hidden">
                             <label for="content-ready" class="p-4 rounded-xl border-2 border-zinc-600 text-center cursor-pointer transition-default hover:border-[var(--accent-color)]">All content is ready</label>
 
@@ -756,7 +737,7 @@
 
                     <div>
                         <label class="block text-lg font-semibold mb-3 text-zinc-300">7. Select your launch speed.</label>
-                        <div class="grid grid-cols-2 gap-3 custom-radio">
+                        <div id="timeline-group" class="grid grid-cols-2 gap-3 custom-radio">
                             <input type="radio" id="timeline-standard" name="timeline" value="standard" data-cost="0" class="hidden">
                             <label for="timeline-standard" class="p-4 rounded-xl border-2 border-zinc-600 text-center cursor-pointer transition-default hover:border-[var(--accent-color)]">Standard (4-6 weeks)</label>
 
@@ -813,7 +794,7 @@
 
                     <div class="mt-6">
                         <label class="block text-sm font-medium text-zinc-400 mb-2">Do you have a company logo?</label>
-                        <div class="grid grid-cols-2 gap-3 custom-radio">
+                        <div id="logo-status-group" class="grid grid-cols-2 gap-3 custom-radio">
                             <input type="radio" id="logo-yes" name="logo-status" value="yes" data-cost="0" class="hidden" checked>
                             <label for="logo-yes" class="p-3 rounded-xl border-2 border-zinc-600 text-center cursor-pointer hover:border-[var(--accent-color)]">Yes, I have one.</label>
 
@@ -857,17 +838,18 @@
             </form>
         </div>
     </div>
+    <!-- End Quote Modal -->
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import "https://unpkg.com/lucide@latest"; 
 
         setLogLevel('debug');
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-        const userProvidedConfig = {
+        // DIRECTLY USING CONFIG as requested
+        const firebaseConfig = { 
             apiKey: "AIzaSyCcUMZmKwdOcUj4KszvTkPKlo-HmiVCXZU",
             authDomain: "setton-source-68177.firebaseapp.com",
             projectId: "setton-source-68177",
@@ -876,29 +858,30 @@
             appId: "1:153708206059:web:14cc935233eee4ecdb72bae",
             measurementId: "G-YW9WN4489T"
         };
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : userProvidedConfig;
+        // Use the hardcoded appId for data path construction
+        const appId = firebaseConfig.appId;
+        let userId;
 
-        let app, auth, db, userId;
+        let app, auth, db;
 
         try {
             app = initializeApp(firebaseConfig);
             db = getFirestore(app);
             auth = getAuth(app);
 
+            // Authentication listener
             onAuthStateChanged(auth, async (user) => {
                 if (!user) {
                     try {
-                        if (initialAuthToken) {
-                            await signInWithCustomToken(auth, initialAuthToken);
-                        } else {
-                            await signInAnonymously(auth);
-                        }
+                        // Sign in anonymously if no user is present (no custom token available)
+                        await signInAnonymously(auth);
                     } catch (error) {
-                        console.error("Authentication failed during initialization or fallback:", error);
+                        console.error("Authentication failed during anonymous sign-in:", error);
                     }
                 }
 
-                userId = auth.currentUser?.uid || 'anonymous-user';
+                // Get the final user ID after auth status settles
+                userId = auth.currentUser?.uid || 'anonymous-user-' + crypto.randomUUID();
                 console.log("Firebase Auth Ready. User ID:", userId);
             });
 
@@ -923,8 +906,16 @@
 
         const projectTypeGroup = document.getElementById('project-type-group');
         const pagesGroup = document.getElementById('pages-group');
+        const backendGroup = document.getElementById('backend-group');
+        const colorsGroup = document.getElementById('colors-group');
+        const contentGroup = document.getElementById('content-group');
+        const timelineGroup = document.getElementById('timeline-group');
         const urlStatusGroup = document.getElementById('url-status-group');
+        const logoStatusGroup = document.getElementById('logo-status-group');
+
         const disclaimerText = document.getElementById('disclaimer-text');
+        const navigationButtons = document.getElementById('navigation-buttons');
+
 
         const stepContents = [
             document.getElementById('step-1-content'),
@@ -950,6 +941,7 @@
         window.addEventListener('scroll', updateHeader);
         updateHeader();
 
+        // --- Typewriter Effect ---
         const typewriterTextElement = document.getElementById('typewriter-text');
         const phrases = [
             "Architecting High-Impact Web Solutions.",
@@ -994,10 +986,13 @@
         }
 
         setTimeout(typeWriter, 1000);
+        // --- End Typewriter Effect ---
 
         function openQuoteModal() {
             quoteModal.classList.remove('hidden', 'modal-exit');
             quoteModal.classList.add('modal-enter');
+            setStep(0); // Reset to first step on open
+            statusDiv.classList.add('hidden'); // Hide status message on reopen
 
             requestAnimationFrame(() => {
                 quoteModal.classList.remove('modal-enter');
@@ -1035,6 +1030,7 @@
                 content.classList.toggle('hidden', index !== step);
             });
 
+            navigationButtons.classList.remove('hidden');
             prevStepBtn.classList.toggle('hidden', step === 0);
             nextStepBtn.classList.toggle('hidden', step === stepContents.length - 1);
             submitQuoteBtn.classList.toggle('hidden', step !== stepContents.length - 1);
@@ -1042,112 +1038,8 @@
             currentStep = step;
             stepDisplay.textContent = step + 1;
 
-            const progressPercentage = ((step) / (stepContents.length - 1)) * 100;
+            const progressPercentage = ((step + 1) / stepContents.length) * 100;
             progressBar.style.width = `${progressPercentage}%`;
-        }
-
-        setStep(0);
-
-        function validateStep(step) {
-            let isValid = true;
-            let stepInputs = [];
-
-            if (step === 0) {
-                stepInputs = [projectTypeGroup, pagesGroup];
-                const backendInputs = quoteForm.querySelectorAll('input[name="backend"]');
-
-                backendInputs.forEach((input) => {
-                    const label = quoteForm.querySelector(`label[for="${input.id}"]`);
-                    label.classList.remove('input-error');
-                });
-
-                if (!quoteForm.querySelector('input[name="backend"]:checked')) {
-                    isValid = false;
-                    backendInputs.forEach((input) => {
-                        const label = quoteForm.querySelector(`label[for="${input.id}"]`);
-                        label.classList.add('input-error');
-                    });
-                }
-            } else if (step === 1) {
-                stepInputs = [quoteForm.querySelector('[name="colors"]'), quoteForm.querySelector('[name="content"]'), quoteForm.querySelector('[name="timeline"]')];
-            } else if (step === 2) {
-                stepInputs = [
-                    document.getElementById('contact-name'),
-                    document.getElementById('contact-email'),
-                    document.getElementById('contact-phone'),
-                    document.getElementById('project-name'),
-                    document.getElementById('project-url'),
-                    urlStatusGroup,
-                    document.getElementById('project-description')
-                ];
-            }
-
-            stepInputs.forEach((input) => {
-                if (!input) return;
-
-                if (input instanceof HTMLElement && input.id === 'project-description') {
-                    input.classList.remove('input-error');
-                    if (!input.value.trim()) {
-                        input.classList.add('input-error');
-                        isValid = false;
-                    }
-                } else if (input instanceof HTMLElement && input.id === 'project-name') {
-                    input.classList.remove('input-error');
-                    if (!input.value.trim()) {
-                        input.classList.add('input-error');
-                        isValid = false;
-                    }
-                } else if (input instanceof HTMLElement && input.id === 'project-url') {
-                    input.classList.remove('input-error');
-                    if (!input.value.trim()) {
-                        input.classList.add('input-error');
-                        isValid = false;
-                    }
-                } else if (input instanceof HTMLElement && input.id === 'url-status-group') {
-                    input.classList.remove('error-group-border');
-                    if (!quoteForm.querySelector('input[name="url-status"]:checked')) {
-                        input.classList.add('error-group-border');
-                        isValid = false;
-                    }
-                } else if (input instanceof HTMLElement && input.id === 'project-type-group') {
-                    input.classList.remove('error-group-border');
-                    if (!quoteForm.querySelector('input[name="projectType"]:checked')) {
-                        input.classList.add('error-group-border');
-                        isValid = false;
-                    }
-                } else if (input instanceof HTMLElement && input.id === 'pages-group') {
-                    input.classList.remove('error-group-border');
-                    if (!quoteForm.querySelector('input[name="pages"]:checked')) {
-                        input.classList.add('error-group-border');
-                        isValid = false;
-                    }
-                } else if (input instanceof HTMLInputElement || input instanceof HTMLSelectElement || input instanceof HTMLTextAreaElement) {
-                    input.classList.remove('input-error');
-                    if (input.type === 'radio' || input.type === 'checkbox') {
-                        const name = input.name;
-                        const groupChecked = quoteForm.querySelector(`input[name="${name}"]:checked`);
-                        const groupContainer = input.closest('.custom-radio');
-                        if (groupContainer) {
-                            groupContainer.classList.remove('error-group-border');
-                        }
-                        if (!groupChecked) {
-                            if (groupContainer) {
-                                groupContainer.classList.add('error-group-border');
-                            }
-                            isValid = false;
-                        }
-                    } else {
-                        const value = input.value.trim();
-                        const isFieldValid = typeof input.checkValidity === 'function' ? input.checkValidity() : value.length > 0;
-                        if (!value || !isFieldValid) {
-                            input.classList.add('input-error');
-                            isValid = false;
-                        }
-                    }
-                }
-            });
-
-            return isValid;
         }
 
         function alertUser(message, color = 'yellow') {
@@ -1166,6 +1058,8 @@
             }
 
             statusMessage.textContent = message;
+            finalPriceDisplay.textContent = ''; // Clear price display on error/warning
+            disclaimerText.classList.add('hidden'); // Hide disclaimer on error/warning
         }
 
         function formatCurrency(value) {
@@ -1176,20 +1070,61 @@
             }).format(value);
         }
 
+        function checkRadioGroupValidity(groupElement, radioName) {
+            groupElement.classList.remove('error-group-border');
+            if (!quoteForm.querySelector(`input[name="${radioName}"]:checked`)) {
+                groupElement.classList.add('error-group-border');
+                return false;
+            }
+            return true;
+        }
+
+        function checkInputValidity(inputElement) {
+            inputElement.classList.remove('input-error');
+            const value = inputElement.value?.trim() || '';
+            let isFieldValid = true;
+
+            if (inputElement.required && value.length === 0) {
+                isFieldValid = false;
+            } else if (inputElement.type === 'tel' && inputElement.required && !/^\d{10}$/.test(value)) {
+                isFieldValid = false;
+            } else if (inputElement.type === 'email' && inputElement.required && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
+                 isFieldValid = false;
+            }
+            
+            if (!isFieldValid) {
+                inputElement.classList.add('input-error');
+            }
+            return isFieldValid;
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+            statusDiv.classList.add('hidden'); // Hide status when validating
+
+            if (step === 0) {
+                isValid &= checkRadioGroupValidity(projectTypeGroup, 'projectType');
+                isValid &= checkRadioGroupValidity(pagesGroup, 'pages');
+                isValid &= checkRadioGroupValidity(backendGroup, 'backend');
+            } else if (step === 1) {
+                isValid &= checkRadioGroupValidity(colorsGroup, 'colors');
+                isValid &= checkRadioGroupValidity(contentGroup, 'content');
+                isValid &= checkRadioGroupValidity(timelineGroup, 'timeline');
+            } else if (step === 2) {
+                isValid &= checkInputValidity(document.getElementById('contact-name'));
+                isValid &= checkInputValidity(document.getElementById('contact-email'));
+                isValid &= checkInputValidity(document.getElementById('contact-phone'));
+                isValid &= checkInputValidity(document.getElementById('project-name'));
+                isValid &= checkInputValidity(document.getElementById('project-url'));
+                isValid &= checkRadioGroupValidity(urlStatusGroup, 'url-status');
+                isValid &= checkInputValidity(document.getElementById('project-description'));
+                isValid &= checkRadioGroupValidity(logoStatusGroup, 'logo-status');
+            }
+            return isValid;
+        }
+
         function calculateQuote() {
             let totalCost = BASE_PRICE;
-
-            const formData = new FormData(quoteForm);
-
-            const requiredRadios = ['projectType', 'pages', 'backend', 'colors', 'content', 'timeline', 'url-status'];
-            let validationPassed = true;
-
-            requiredRadios.forEach((name) => {
-                const isChecked = formData.getAll(name).length > 0 || quoteForm.querySelector(`input[name="${name}"]:checked`);
-                if (!isChecked) {
-                    validationPassed = false;
-                }
-            });
 
             const allInputs = quoteForm.querySelectorAll('input[data-cost], input[type="checkbox"][data-cost]');
 
@@ -1206,12 +1141,14 @@
             const estimateText = formatCurrency(totalCost);
             quoteResult.textContent = estimateText;
 
-            if (validationPassed) {
-                pricePreview.classList.remove('text-red-500');
-                pricePreview.classList.add('text-[var(--accent-color)]');
+            const isStepValid = validateStep(currentStep);
+
+            if (isStepValid) {
+                quoteResult.classList.remove('text-red-500');
+                quoteResult.classList.add('text-[var(--accent-color)]');
             } else {
-                pricePreview.classList.remove('text-[var(--accent-color)]');
-                pricePreview.classList.add('text-red-500');
+                quoteResult.classList.remove('text-[var(--accent-color)]');
+                quoteResult.classList.add('text-red-500');
             }
 
             return { raw: totalCost, formatted: estimateText };
@@ -1223,7 +1160,7 @@
                 calculateQuote();
                 return;
             }
-
+            
             if (currentStep < stepContents.length - 1) {
                 setStep(currentStep + 1);
                 calculateQuote();
@@ -1249,22 +1186,27 @@
 
             const quoteData = {};
 
-            quoteData.projectType = quoteForm.querySelector('input[name="projectType"]:checked').value;
-            quoteData.pages = quoteForm.querySelector('input[name="pages"]:checked').value;
-            quoteData.backend = quoteForm.querySelector('input[name="backend"]:checked').value;
-            quoteData.colors = quoteForm.querySelector('input[name="colors"]:checked').value;
-            quoteData.content = quoteForm.querySelector('input[name="content"]:checked').value;
-            quoteData.timeline = quoteForm.querySelector('input[name="timeline"]:checked').value;
-            quoteData.features = Array.from(quoteForm.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.id);
-
-            quoteData.name = document.getElementById('contact-name').value;
-            quoteData.email = document.getElementById('contact-email').value;
-            quoteData.phone = document.getElementById('contact-phone').value;
-            quoteData.projectName = document.getElementById('project-name').value;
-            quoteData.projectUrl = document.getElementById('project-url').value;
+            const formData = new FormData(quoteForm);
+            for (const [key, value] of formData.entries()) {
+                 // Skip unchecked boxes during initial iteration
+                if (key.startsWith('feature-') || key.startsWith('logo-status') || key.startsWith('url-status')) {
+                    continue; 
+                }
+                quoteData[key] = value;
+            }
+            
+            // Re-add selected items from radio/checkbox groups
+            quoteData.projectType = quoteForm.querySelector('input[name="projectType"]:checked')?.value || 'N/A';
+            quoteData.pages = quoteForm.querySelector('input[name="pages"]:checked')?.value || 'N/A';
+            quoteData.backend = quoteForm.querySelector('input[name="backend"]:checked')?.value || 'N/A';
+            quoteData.colors = quoteForm.querySelector('input[name="colors"]:checked')?.value || 'N/A';
+            quoteData.content = quoteForm.querySelector('input[name="content"]:checked')?.value || 'N/A';
+            quoteData.timeline = quoteForm.querySelector('input[name="timeline"]:checked')?.value || 'N/A';
             quoteData.urlStatus = quoteForm.querySelector('input[name="url-status"]:checked')?.value || 'N/A';
-            quoteData.projectDescription = document.getElementById('project-description').value;
-            quoteData.logoStatus = quoteForm.querySelector('input[name="logo-status"]:checked').value;
+            quoteData.logoStatus = quoteForm.querySelector('input[name="logo-status"]:checked')?.value || 'N/A';
+
+            // Handle checkboxes
+            quoteData.features = Array.from(quoteForm.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.id.replace('feature-', ''));
 
             quoteData.finalEstimate = cost.raw;
             quoteData.formattedEstimate = cost.formatted;
@@ -1276,17 +1218,24 @@
             statusDiv.classList.add('hidden');
 
             try {
-                const collectionPath = `quotes/${appId}/public/data/quotes`;
+                // Public data collection path for submissions visible to admins/owners
+                const collectionPath = `quotes`;
                 const docRef = await addDoc(collection(db, collectionPath), quoteData);
 
                 console.log(`Firestore Write Success: Document written with ID: ${docRef.id} to collection: ${collectionPath}`);
+                
+                // Success State
                 statusMessage.textContent = 'Quote Submitted Successfully!';
                 finalPriceDisplay.textContent = `Final Estimate: ${cost.formatted}`;
-                statusDiv.classList.remove('hidden');
-                statusDiv.classList.remove('bg-yellow-600/50', 'bg-red-600/50');
+                statusDiv.classList.remove('hidden', 'bg-yellow-600/50', 'bg-red-600/50');
                 statusDiv.classList.add('bg-green-600/50');
-
                 disclaimerText.classList.remove('hidden');
+
+                // Update UI for submission success
+                stepContents.forEach(content => content.classList.add('hidden'));
+                navigationButtons.classList.add('hidden');
+                progressBar.style.width = '100%';
+                stepDisplay.textContent = '3';
 
             } catch (error) {
                 console.error("Error writing document to Firestore: ", error);
@@ -1320,6 +1269,7 @@
             });
         }
 
+        // --- Admin Secret Code Logic ---
         const SECRET_CODE = ['h', 'a', 'n', 'n', 'a', 'h'];
         let keyPressHistory = [];
 
@@ -1346,6 +1296,7 @@
                 keyPressHistory = [];
             }
         });
+        // --- End Admin Secret Code Logic ---
 
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') {
@@ -1354,6 +1305,7 @@
 
             setupInfoToggles();
 
+            // Initial calculation
             calculateQuote();
         });
     </script>
