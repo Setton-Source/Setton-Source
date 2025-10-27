@@ -1,0 +1,73 @@
+--- a/index.html
++++ b/index.html
+@@ -1320,7 +1320,7 @@
+         // Base Price for a simple 1-page static site is $1000
+-        const BASE_PRICE = 1000;
++        const BASE_PRICE = 1199; // Premium base price
+ 
+         // ------------------
+         // 1. Header Scroll Logic (Kept from previous version)
+@@ -1610,7 +1610,7 @@
+                             <input type="radio" id="type-shop" name="projectType" value="E-commerce/Shop" 
+-                                   data-cost="100" class="hidden">
++                                   data-cost="300" class="hidden">
+                             <label for="type-shop" ...
+ 
+@@ -1620,7 +1620,7 @@
+                             <input type="radio" id="type-custom" name="projectType" value="Custom App"
+-                                   data-cost="1000" class="hidden">
++                                   data-cost="900" class="hidden">
+                             <label for="type-custom" ...
+ 
+@@ -1643,23 +1643,23 @@
+-                            <input id="pages-3" name="pages" value="3" data-cost="500" class="hidden">
++                            <input id="pages-3" name="pages" value="3" data-cost="400" class="hidden">
+ 
+-                            <input id="pages-5" name="pages" value="5" data-cost="1500" class="hidden">
++                            <input id="pages-5" name="pages" value="5" data-cost="1000" class="hidden">
+ 
+-                            <input id="pages-7" name="pages" value="7" data-cost="2000" class="hidden">
++                            <input id="pages-7" name="pages" value="7" data-cost="1600" class="hidden">
+ 
+-                            <input id="pages-10-plus" name="pages" value="10+" data-cost="4000" class="hidden">
++                            <input id="pages-10-plus" name="pages" value="10+" data-cost="2500" class="hidden">
+ 
+@@ -1678,7 +1678,7 @@
+                             <input type="radio" id="backend-yes" name="backend" value="yes"
+-                                   data-cost="800" class="hidden">
++                                   data-cost="1200" class="hidden">
+                             <label for="backend-yes" ...
+ 
+@@ -1704,7 +1704,7 @@
+                             <input type="checkbox" id="feature-ecommerce" ...
+-                                   data-cost="1500">
++                                   data-cost="900">
+ 
+@@ -1716,7 +1716,7 @@
+                             <input type="checkbox" id="feature-admin" ...
+-                                   data-cost="700">
++                                   data-cost="450">
+ 
+@@ -1728,7 +1728,7 @@
+                             <input type="checkbox" id="feature-support" ...
+-                                   data-cost="300">
++                                   data-cost="280">
+ 
+@@ -1756,7 +1756,7 @@
+                             <input type="radio" id="colors-custom" name="colors" value="custom"
+-                                   data-cost="150" class="hidden">
++                                   data-cost="200" class="hidden">
+                             <label for="colors-custom" ...
+ 
+@@ -1800,7 +1800,7 @@
+                             <input type="radio" id="logo-no" name="logo-status" value="no"
+-                                   data-cost="100" class="hidden">
++                                   data-cost="250" class="hidden">
+                             <label for="logo-no" ...
+ 
+@@ -1880,7 +1880,7 @@
+                     <div id="quote-price-preview" class="text-center">
+                         <p class="text-lg font-medium text-zinc-300">Current Estimate:</p>
+-                        <p id="quote-result" class="text-4xl font-extrabold text-[var(--accent-color)] mt-1">$1,000</p>
++                        <p id="quote-result" class="text-4xl font-extrabold text-[var(--accent-color)] mt-1">$1,199</p>
+                     </div>
